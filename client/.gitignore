@@ -1,0 +1,7 @@
+# 基本配置
+node_modules
+dist
+.history
+.git
+
+# 其他自定义内容

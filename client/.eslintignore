@@ -1,0 +1,6 @@
+# 基本配置
+dist/*
+build/*
+node_modules/*
+
+# 其他
