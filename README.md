@@ -13,3 +13,14 @@
 * ts react(17/18) react-router(4/5/6) redux/mobx antd eslint test eject mock vite pnpm
 
 # 运行环境
+```shell
+  # npm
+  npm install
+  npm start
+  # yarn
+  yarn
+  yarn start
+  # pnpm
+  npm install
+  pnpm start
+```
