@@ -4,6 +4,7 @@ import { Layout, Spin } from 'antd';
 import { createHashHistory } from 'history';
 import { onConnect, removeAllListeners, disconnect } from '@components/Socket/index';
 import LayoutHeader from '@components/LayoutHeader/index';
+import NavHeader from '@components/Header/index';
 import Menu from './components/menu';
 import routeConfig from '@/routeConfig';
 import './index.less';
@@ -26,12 +27,14 @@ class Index extends Component {
   render() {
     return (
       <Router history={history}>
+        <NavHeader />
         <Layout className="homeLayout">
           <Sider
             style={{
               overflow: 'auto',
               height: '100vh',
-              left: 0
+              left: 0,
+              borderRight: '1px solid #f2f2f2'
             }}
             theme="light"
           >
@@ -39,9 +42,9 @@ class Index extends Component {
             <Menu />
           </Sider>
           <Layout>
-            <Header className="header">
+            {/* <Header className="header">
               <LayoutHeader />
-            </Header>
+            </Header> */}
             <Content className="homeContent">
               <Suspense
                 fallback={
@@ -52,6 +55,7 @@ class Index extends Component {
               >
                 <Switch>
                   {routeConfig}
+                  {/* TODO: 重定向. 需要在目标页面校验后判断是否需要做二次跳转 */}
                   <Redirect from="/*" to="/user/login" />
                 </Switch>
               </Suspense>

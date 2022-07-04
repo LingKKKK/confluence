@@ -1,13 +1,6 @@
-/*
- * 错误捕获组件
- * @Author: Jiang
- * @Date: 2019-06-12 15:21:19
- * @Last Modified by: Jiang
- * @Last Modified time: 2021-02-20 10:49:28
- */
 import React from 'react';
 import { Result, Button } from 'antd';
-import * as Sentry from '@sentry/react';
+// import * as Sentry from '@sentry/react';
 
 interface IProps {}
 
@@ -33,17 +26,17 @@ class ErrorBoundary extends React.Component<IProps, IState> {
       info: error + ''
     });
     const userId = Math.random().toString(36).substr(2, 9);
-    Sentry.withScope((scope) => {
-      scope.setExtras(info.componentStack);
-      scope.setUser({
-        id: userId,
-        username: 'testUser',
-        ip_address: '',
-        email: ''
-      });
-      const eventId = Sentry.captureException(error);
-      this.setState({ eventId });
-    });
+    // Sentry.withScope((scope) => {
+    //   scope.setExtras(info.componentStack);
+    //   scope.setUser({
+    //     id: userId,
+    //     username: 'testUser',
+    //     ip_address: '',
+    //     email: ''
+    //   });
+    //   const eventId = Sentry.captureException(error);
+    //   this.setState({ eventId });
+    // });
   }
 
   render() {
@@ -57,7 +50,7 @@ class ErrorBoundary extends React.Component<IProps, IState> {
           extra={
             <Button
               type="primary"
-              onClick={() => Sentry.showReportDialog({ eventId: this.state.eventId })}
+              // onClick={() => Sentry.showReportDialog({ eventId: this.state.eventId })}
             >
               Report feedback
             </Button>

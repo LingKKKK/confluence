@@ -1,12 +1,3 @@
-/* eslint-disable no-undef */
-/*
- * Socket集成
- * @Author: Jiang
- * @Date: 2019-08-27 18:00:15
- * @Last Modified by: Jiang
- * @Last Modified time: 2021-09-11 22:32:17
- */
-
 // import io from 'socket.io-client';
 
 let SOCKET: any = '';

@@ -1,13 +1,14 @@
 import React from 'react';
-// import { Button } from 'antd';
+import { Button } from 'antd';
 import { useRootStore } from '@mobx/useRootStore';
 import { observer } from 'mobx-react';
-// import { Switch } from 'react-router-dom';
-// import PrivateRoute from '@components/PrivateRoute';
+import { Switch } from 'react-router-dom';
+import PrivateRoute from '@components/PrivateRoute';
 import { Table } from 'antd';
 import './index.less';
 
-function Dashboard() {
+function Dashboard(props: any) {
+  console.log(props);
   const { dashboardStore } = useRootStore();
   console.log('dashboardStore: ', dashboardStore);
   React.useEffect(() => {
@@ -15,16 +16,19 @@ function Dashboard() {
     console.log('useEffect - dashboardStore: ', dashboardStore);
   }, []);
 
-  // const RouteWithSubRoutes = route => <PrivateRoute path={route.path} component={route.component} routes={route.routes} />;
+  const RouteWithSubRoutes = (route) => (
+    <PrivateRoute path={route.path} component={route.component} routes={route.routes} />
+  );
 
-  // const routeConfig = this.props.routes.map((route, i) => <RouteWithSubRoutes key={i} {...route} />);
+  const routeConfig = props.routes.map((route, i) => (
+    <RouteWithSubRoutes key={i} {...route} />
+  ));
+
   return (
     <section className="dashboard">
       <OrderTable list={dashboardStore.list} isLoading={dashboardStore.isLoading.get('getTable')} />
-      {/* <Button onClick={() => this.props.history.push('/dashboard/bus')}>二级路由</Button> */}
-      {/* <Switch>
-                {routeConfig}
-            </Switch> */}
+      <Button onClick={() => props.history.push('/dashboard/bus')}>二级路由</Button>
+      <Switch>{routeConfig}</Switch>
     </section>
   );
 }

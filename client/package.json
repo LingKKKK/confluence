@@ -49,9 +49,9 @@
     "trtc-js-sdk": "^4.8.5",
     "typescript": "^4.4.3",
     "vite": "2.9.12",
+    "vite-plugin-imp": "^2.0.8",
     "vite-plugin-pwa": "0.12.0",
-    "vite-tsconfig-paths": "3.5.0",
-    "vite-plugin-imp": "^2.0.8"
+    "vite-tsconfig-paths": "3.5.0"
   },
   "scripts": {
     "start": "vite",
@@ -78,5 +78,11 @@
       "prettier --write",
       "git add"
     ]
+  },
+  "eslintConfig": {
+    "parser": "babel-eslint"
+  },
+  "devDependencies": {
+    "@types/react-router-dom": "^5.3.3"
   }
 }

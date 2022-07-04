@@ -1,0 +1,137 @@
+.navigation-header {
+  background-color: #0049b0;
+  position: relative;
+  height: 40px;
+  display: block;
+  padding: 0 10px;
+  box-sizing: border-box;
+
+  .title {
+    display: inline-block;
+    margin-left: 10px;
+    margin-bottom: 0;
+    line-height: 40px;
+    color: #fff;
+    float: left;
+  }
+
+  .quick-ul {
+    margin: 0 0 0 10px;
+    display: block;
+    float: left;
+
+    li {
+      display: block;
+      float: left;
+      color: #deebff;
+      line-height: 40px;
+      padding: 0 10px;
+      cursor: pointer;
+
+      &:hover {
+        color: #fff;
+      }
+
+      &.active {
+        color: #fff;
+      }
+    }
+  }
+
+  .add-dialog {
+    margin: 5px;
+    display: inline-block;
+    cursor: pointer;
+
+    .create {
+      background-color: #0065ff;
+      line-height: 30px;
+      padding: 0 10px;
+      height: 100%;
+      display: inline-block;
+      color: #fff;
+      border-top-left-radius: 3.01px;
+      border-bottom-left-radius: 3.01px;
+    }
+
+    .new {
+      background-color: #0065ff;
+      line-height: 30px;
+      padding: 0 10px;
+      height: 100%;
+      display: inline-block;
+      color: #fff;
+      border-top-right-radius: 3.01px;
+      border-bottom-right-radius: 3.01px;
+      margin-left: 1px;
+    }
+  }
+
+  .user-avatar {
+    vertical-align: middle;
+    margin-top: 4px;
+    margin-bottom: 0;
+    display: inline-block;
+    float: right;
+    cursor: pointer;
+    margin-left: 10px;
+  }
+
+  .user-operate-btn {
+    display: inline-block;
+    float: right;
+    color: #deebff;
+    font-size: 20px;
+    padding: 10px;
+    cursor: pointer;
+    transition: all 0.3s;
+
+    &:hover {
+      color: #fff;
+    }
+  }
+
+  .icon {
+    float: left;
+  }
+
+  .tips {
+  }
+
+  .help {
+  }
+
+  .search-dialog {
+    width: 220px;
+    height: 30px;
+    margin-top: 5px;
+    float: right;
+    margin-right: 10px;
+    color: #DEEBFF;
+    background-color: #07347c;
+    cursor: text;
+    padding: 0 26px 0 10px;
+    box-sizing: border-box;
+    line-height: 30px;
+    position: relative;
+    border-radius: 3px;
+    transition: all 0.3s;
+
+    .search-icon {
+      color: #deebff;
+      font-size: 16px;
+      position: absolute;
+      right: 10px;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+    &:hover {
+      color: #fff;
+
+      .search-icon {
+        color: #fff;
+      }
+    }
+  }
+}

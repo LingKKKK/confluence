@@ -8,37 +8,39 @@ const AddGoods = lazy(() => import(/* webpackChunkName: "AddGoods"*/ '@/pages/ad
 const Login = lazy(() => import(/* webpackChunkName: "Login"*/ '@/pages/user/login'));
 const Error = lazy(() => import(/* webpackChunkName: "Error"*/ '@/pages/user/error'));
 
+const Plugins = lazy(() => import(/* webpackChunkName: "Plugins"*/ '@/pages/plugins/index'));
+
 const routes = [
-    {
-        // 仪表盘页
-        path: '/dashboard',
-        component: Dashboard,
-        routes: [
-            {
-                path: '/dashboard/bus',
-                component: Bus
-            }
-        ]
-    },
-    {
-        // 添加商品页
-        path: '/add/goods',
-        component: AddGoods
-    },
-    {
-        // 登录页
-        path: '/user/login',
-        component: Login
-    },
-    {
-        // 权限或者404页面
-        path: '/user/error',
-        component: Error
-    }
+  {
+    path: '/user/login',
+    component: Login
+  },
+  {
+    path: '/plugins',
+    component: Plugins
+  },
+  {
+    path: '/dashboard',
+    component: Dashboard,
+    routes: [
+      {
+        path: '/dashboard/bus',
+        component: Bus
+      }
+    ]
+  },
+  {
+    path: '/add/goods',
+    component: AddGoods
+  },
+  {
+    path: '/user/error',
+    component: Error
+  }
 ];
 
-const RouteWithSubRoutes = route => (
-    <PrivateRoute path={route.path} component={route.component} routes={route.routes} />
+const RouteWithSubRoutes = (route) => (
+  <PrivateRoute path={route.path} component={route.component} routes={route.routes} />
 );
 
 const routeConfig = routes.map((route, i) => <RouteWithSubRoutes key={i} {...route} />);

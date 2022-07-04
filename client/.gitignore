@@ -3,5 +3,8 @@ node_modules
 dist
 .history
 .git
+*.yaml
+*-lock.json
+*.lock
 
 # 其他自定义内容

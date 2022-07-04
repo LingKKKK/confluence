@@ -80,7 +80,8 @@ export default ({ mode }) => {
         },
         less: {
           modifyVars: {
-            'primary-color': '#1DA57A'
+            // 配置主题色
+            'primary-color': '#2684ff'
           },
           javascriptEnabled: true
         }

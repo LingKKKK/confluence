@@ -1,5 +1,5 @@
 import React from 'react';
-import * as Sentry from '@sentry/react';
+// import * as Sentry from '@sentry/react';
 import { ConfigProvider } from 'antd';
 import { configure } from 'mobx';
 import intl from 'react-intl-universal';
@@ -22,56 +22,58 @@ const history = createHashHistory();
 configure({ enforceActions: 'observed' });
 
 const locales = {
-    // error：vite require is nodefined
-    // en_US: require('@locales/en_US.json'),
-    // zh_CN: require('@locales/zh_CN.json')
-    en_US: enUSJSON,
-    zh_CN: znCNJSON
+  // error：vite require is nodefined
+  // en_US: require('@locales/en_US.json'),
+  // zh_CN: require('@locales/zh_CN.json')
+  en_US: enUSJSON,
+  zh_CN: znCNJSON
 };
 
-Sentry.init({ dsn: 'https://11f12914dc114782b37d9d94c8839a40@o414598.ingest.sentry.io/5304319' });
+// Sentry.init({ dsn: 'https://11f12914dc114782b37d9d94c8839a40@o414598.ingest.sentry.io/5304319' });
 
 interface IProps {}
 
 interface IState {
-    antdLang: string | boolean;
+  antdLang: string | boolean;
 }
 
 export default class App extends React.Component<IProps, IState> {
-    constructor(props) {
-        super(props);
-        this.state = {
-            antdLang: 'zh_CN'
-        };
-    }
+  constructor(props) {
+    super(props);
+    this.state = {
+      antdLang: 'zh_CN'
+    };
+  }
 
-    componentDidMount() {
-        this.loadLocales();
-        Event.on('changeLanguage', (obj: any) => {
-            dayjs.locale(obj.args == 'zh_CN' ? 'zh-cn' : 'en-us');
-            this.loadLocales(obj.args);
-        });
-    }
+  componentDidMount() {
+    this.loadLocales();
+    Event.on('changeLanguage', (obj: any) => {
+      dayjs.locale(obj.args == 'zh_CN' ? 'zh-cn' : 'en-us');
+      this.loadLocales(obj.args);
+    });
+  }
 
-    loadLocales(lang = 'zh_CN') {
-        intl.init({
-            currentLocale: lang,
-            locales
-        }).then(() => this.setState({ antdLang: lang == 'zh_CN' }));
-    }
+  loadLocales(lang = 'zh_CN') {
+    intl
+      .init({
+        currentLocale: lang,
+        locales
+      })
+      .then(() => this.setState({ antdLang: lang == 'zh_CN' }));
+  }
 
-    render() {
-        return (
-            <ConfigProvider locale={this.state.antdLang ? zh_CN : en_US}>
-                <Router history={history}>
-                    <Switch>
-                        <Route path="/user/login" exact component={Login} />
-                        <ErrorBoundary>
-                            <Home />
-                        </ErrorBoundary>
-                    </Switch>
-                </Router>
-            </ConfigProvider>
-        );
-    }
+  render() {
+    return (
+      <ConfigProvider locale={this.state.antdLang ? zh_CN : en_US}>
+        <Router history={history}>
+          <Switch>
+            <Route path="/user/login" exact component={Login} />
+            <ErrorBoundary>
+              <Home />
+            </ErrorBoundary>
+          </Switch>
+        </Router>
+      </ConfigProvider>
+    );
+  }
 }

@@ -6,6 +6,7 @@ import React, { Component } from 'react';
 import { HomeOutlined, ShoppingCartOutlined } from '@ant-design/icons';
 import { withRouter } from 'react-router-dom';
 import {
+  ApiOutlined,
   AppstoreOutlined,
   ContainerOutlined,
   DesktopOutlined,
@@ -79,8 +80,9 @@ class Index extends Component<IProps, IState> {
     }
 
     const items: MenuItem[] = [
-      getItem('Table列表', '/dashboard', <PieChartOutlined />),
-      getItem('Form表单', '/add/goods', <DesktopOutlined />),
+      getItem('插件中心', '/plugins', <ApiOutlined />),
+      getItem('仪表盘示例', '/dashboard', <PieChartOutlined />),
+      getItem('表单示例', '/add/goods', <DesktopOutlined />),
       getItem('404', '/user/error', <ContainerOutlined />)
 
       // getItem('Navigation One', 'sub1', <MailOutlined />, [

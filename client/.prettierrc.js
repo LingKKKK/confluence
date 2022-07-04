@@ -1,7 +1,7 @@
 "use strict";
 /** @format */
 module.exports = {
-  singleQuote: true,
+  singleQuote: false,
   trailingComma: 'none',
   printWidth: 100,
   proseWrap: 'never',

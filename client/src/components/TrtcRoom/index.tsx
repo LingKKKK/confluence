@@ -1,12 +1,5 @@
-/* eslint-disable no-undef */
-/*
- * TRTC集成WEBSDK，参考文档: https://trtc-1252463788.file.myqcloud.com/web/docs/tutorial-01-basic-video-call.html
- * @Author: Jiang
- * @Date: 2019-08-27 18:00:15
- * @Last Modified by: Jiang
- * @Last Modified time: 2021-02-20 10:49:52
- */
-import React from 'react';
+// TRTC集成WEBSDK，参考文档: https://trtc-1252463788.file.myqcloud.com/web/docs/tutorial-01-basic-video-call.htmlimport React from 'react';
+
 import { inject, observer } from 'mobx-react';
 import { Popconfirm, Spin, Button } from 'antd';
 import TRTC from 'trtc-js-sdk';

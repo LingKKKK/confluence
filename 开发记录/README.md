@@ -30,3 +30,24 @@
 # 其他
 
 考虑如何和网盘/ActionView打通?
+
+1. 登录框样式优化
+2. 顶部导航和侧边栏以及各类操作按钮样式统一
+
+# 任务排期
+
+  sprint1-1w
+    页面布局
+    markdown(代码块)
+  sprint2-1w
+    标题
+    文本编辑
+  sprint3-2w
+    server端数据存储
+  sprint4-1w
+    媒体
+    分栏 layout
+  sprint5-1w
+    表格 table
+  sprint6-2w
+    登录 (IT Code + 消息提醒)

@@ -1,100 +1,75 @@
-/*
- * 登录页面
- * @Author: Jiang
- * @Date: 2019-06-13 16:45:59
- * @Last Modified by: Jiang
- * @Last Modified time: 2021-04-17 15:56:06
- */
-
-import React, { Component } from 'react';
+import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import { Form, Input, Button, Checkbox } from 'antd';
-import { UserOutlined, LockOutlined } from '@ant-design/icons';
 import 'antd/lib/style/index.css';
 import './login.less';
 
-interface IProps {
-    history: {
-        push(url: string): void;
+const Login: React.FC = () => {
+  const [rememberStatus, setRememberStatus] = useState(false);
+  const [isRequire] = useState(true);
+  const history = useHistory();
+
+  const onFinish = (values: any) => {
+    const params = {
+      ...values,
+      rememberStatus
     };
-}
-
-class Login extends Component<IProps> {
-    constructor(props) {
-        super(props);
-        this.state = {};
+    console.log('用户登录信息::::', params);
+    if (params?.account === 'admin' && params?.password === 'admin') {
+      history.push('/plugins');
     }
+  };
 
-    // 表单提交
-    handleSubmit = values => {
-        const { history } = this.props;
-        console.log('Success:', values);
-        localStorage.token = 'login';
-        history.push('/dashboard');
-    };
+  const toggleRememberStatus = (e: { target: { checked: boolean } }) => {
+    console.log(e);
+    setRememberStatus(e.target.checked);
+  };
 
-    render() {
-        return (
-            <main className="login">
-                <Form onFinish={this.handleSubmit} className="login-form">
-                    <Form.Item
-                        name="loginName"
-                        rules={[
-                            {
-                                required: true,
-                                message: '请输入账号'
-                            }
-                        ]}
-                    >
-                        <Input
-                            prefix={<UserOutlined className="site-form-item-icon" />}
-                            size="large"
-                            addonBefore="账号"
-                            placeholder="请输入账号"
-                        />
-                    </Form.Item>
-                    <Form.Item
-                        name="password"
-                        rules={[
-                            {
-                                required: true,
-                                message: '请输入密码'
-                            }
-                        ]}
-                    >
-                        <Input
-                            prefix={<LockOutlined className="site-form-item-icon" />}
-                            size="large"
-                            type="password"
-                            addonBefore="密码"
-                            placeholder="请输入密码"
-                        />
-                    </Form.Item>
-                    <Form.Item name="remember">
-                        <article className="login-form-remember">
-                            <Checkbox>Remember me</Checkbox>
-                            <a className="login-form-forgot" href="">
-                                Forgot password
-                            </a>
-                        </article>
-                    </Form.Item>
-                    <Form.Item>
-                        <Button
-                            type="primary"
-                            htmlType="submit"
-                            className="login-form-button login-btn"
-                        >
-                            Log in
-                        </Button>
-                    </Form.Item>
-                    <Form.Item>
-                        <article className="register">
-                            Or&nbsp;<a href="">register now!</a>
-                        </article>
-                    </Form.Item>
-                </Form>
-            </main>
-        );
-    }
-}
+  return (
+    <main className="login">
+      <div className="login-dialog">
+        <Form
+          className="login-form"
+          labelCol={{ span: 4 }}
+          wrapperCol={{ span: 20 }}
+          onFinish={onFinish}
+          autoComplete="off"
+        >
+          <Form.Item
+            label="账号"
+            name="account"
+            rules={[{ required: isRequire, message: '请输入账号!' }]}
+          >
+            <Input />
+          </Form.Item>
+          <Form.Item
+            label="密码"
+            name="password"
+            rules={[{ required: isRequire, message: '请输入密码!' }]}
+          >
+            <Input.Password />
+          </Form.Item>
+          <article className="login-form-remember">
+            <span className="remember-me">
+              <Form.Item>
+                <Checkbox checked={rememberStatus} onChange={toggleRememberStatus}>
+                  记住我的登录信息
+                </Checkbox>
+              </Form.Item>
+            </span>
+            <a className="login-form-forgot" href="">
+              忘记密码
+            </a>
+          </article>
+          <Form.Item wrapperCol={{ span: 24 }}>
+            <Button type="primary" htmlType="submit" className="login-form-button login-btn">
+              登录
+            </Button>
+          </Form.Item>
+        </Form>
+      </div>
+    </main>
+  );
+};
 
 export default Login;
