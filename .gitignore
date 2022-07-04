@@ -6,5 +6,7 @@ dist
 *.yaml
 *-lock.json
 *.lock
+.vscode
+.idea
 
 # 其他自定义内容
