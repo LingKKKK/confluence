@@ -48,7 +48,8 @@
       line-height: 30px;
       padding: 0 10px;
       height: 100%;
-      display: inline-block;
+      display: block;
+      float: left;
       color: #fff;
       border-top-left-radius: 3.01px;
       border-bottom-left-radius: 3.01px;
@@ -56,14 +57,24 @@
 
     .new {
       background-color: #0065ff;
-      line-height: 30px;
-      padding: 0 10px;
-      height: 100%;
-      display: inline-block;
+      width: 30px;
+      height: 30px;
+      position: relative;
+      display: block;
+      float: left;
       color: #fff;
       border-top-right-radius: 3.01px;
       border-bottom-right-radius: 3.01px;
       margin-left: 1px;
+
+      .icon {
+        font-size: 20px;
+        color: #fff;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+      }
     }
   }
 

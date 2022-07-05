@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { BugFilled, PlusOutlined, MessageOutlined, QuestionCircleOutlined, SearchOutlined } from '@ant-design/icons';
 import { withRouter, useHistory } from 'react-router-dom';
 import { Typography, Avatar } from 'antd';
+import { EllipsisOutlined } from "@ant-design/icons";
 import Event from '@utils/event';
 import './index.less';
 
@@ -25,7 +26,7 @@ const showTips = () => {
   console.log('展示帮助信息');
 };
 const showUserOperation = () => {
-  console.log('展示个人操作栏')
+  console.log('展示个人操作栏');
 };
 
 const defaultAvatar: any = '//pic3.zhimg.com/v2-abed1a8c04700ba7d72b45195223e0ff_im.jpg?source=32738c0c%202x';
@@ -48,7 +49,9 @@ const NavHeader: React.FC = () => {
       </ul>
       <div className="add-dialog">
         <span className="create">创建</span>
-        <span className="new">...</span>
+        <span className="new">
+          <EllipsisOutlined className='icon' />
+        </span>
       </div>
       <span onClick={showUserOperation}>
         <Avatar className="user-avatar" style={{ verticalAlign: 'middle' }} size="default" src={defaultAvatar}></Avatar>

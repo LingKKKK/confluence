@@ -4,7 +4,7 @@ import { useRootStore } from '@mobx/useRootStore';
 import { observer } from 'mobx-react';
 import { Switch } from 'react-router-dom';
 import PrivateRoute from '@components/PrivateRoute';
-import OperationHeader from '@components/OperationHeader/index';
+import OperationDialog from '@components/OperationDialog/index';
 import './index.less';
 
 function Plugins(props: any) {
@@ -12,7 +12,10 @@ function Plugins(props: any) {
 
   return (
     <section className="plugins">
-      <OperationHeader />
+      <>
+        <OperationDialog />
+      </>
+      1111
     </section>
   );
 }
