@@ -8,7 +8,7 @@ const AddGoods = lazy(() => import(/* webpackChunkName: "AddGoods"*/ '@/pages/ad
 const Login = lazy(() => import(/* webpackChunkName: "Login"*/ '@/pages/user/login'));
 const Error = lazy(() => import(/* webpackChunkName: "Error"*/ '@/pages/user/error'));
 
-const Plugins = lazy(() => import(/* webpackChunkName: "Plugins"*/ '@/pages/plugins/index'));
+const Index = lazy(() => import(/* webpackChunkName: "Index"*/ '@/pages/Index/index'));
 
 const routes = [
   {
@@ -16,8 +16,8 @@ const routes = [
     component: Login
   },
   {
-    path: '/plugins',
-    component: Plugins
+    path: '/index',
+    component: Index
   },
   {
     path: '/dashboard',

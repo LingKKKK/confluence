@@ -80,7 +80,7 @@ class Index extends Component<IProps, IState> {
     }
 
     const items: MenuItem[] = [
-      getItem('插件中心', '/plugins', <ApiOutlined />),
+      getItem('插件中心', '/index', <ApiOutlined />),
       getItem('仪表盘示例', '/dashboard', <PieChartOutlined />),
       getItem('表单示例', '/add/goods', <DesktopOutlined />),
       getItem('404', '/user/error', <ContainerOutlined />)

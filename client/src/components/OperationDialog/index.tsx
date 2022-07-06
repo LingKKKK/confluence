@@ -108,7 +108,7 @@ const OperationHeader: React.FC = () => {
         {operationList.map((item: operationItem) => {
           return (
             item.display && (
-              <span className={`operationBtn ${item.type}`}>
+              <span className={`operationBtn ${item.type}`} key={item.id}>
                 {item.tag}
                 {item.desc}
               </span>
