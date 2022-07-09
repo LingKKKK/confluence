@@ -1,4 +1,5 @@
 import React, { useState, useEffect, SyntheticEvent } from "react";
+import KeyboardListener from "jj-keyboard";
 import "./index.less";
 
 interface operationItem {
@@ -33,23 +34,45 @@ interface operationItem {
 // console.log(nus!.trim());
 
 const EditorDialog: React.FC = () => {
-  // const [operationList, setOperationList] = useState(Array<operationItem>());
+  const [refresh, setRefresh] = useState(0);
+
+  KeyboardListener.delAllCatch();
+  KeyboardListener.destroy();
+  KeyboardListener.init();
+  KeyboardListener.isConsole = true; // boolean -> 打印输入信息,可以在各浏览器进行测试
+
+  KeyboardListener.catch("Enter", (value) => {
+    value.preventDefault();
+    // const _dialog = document.getElementById("editor-dialog"); // 获取到指定标签
+    const positionObj = window.getSelection();
+    console.log(positionObj);
+  });
+  KeyboardListener.catch("Meta+V", (value) => {
+    value.preventDefault();
+  });
+  // KeyboardListener.catch("Shift+Enter", (value) => {
+  //   value.preventDefault();
+  // });
+
+  // 兼容性、按键Bug
+  KeyboardListener.catch("V+Meta", (value) => {
+    value.preventDefault();
+  });
 
   useEffect(() => {
+    console.log(refresh);
     // TODO: 1 截获用户点击事件
     // TODO: 2 获取到点击时光标所在位置
     // TODO: 3 获取到点击时光标所在行的Node信息
-    console.log("页面初始化时绑定监听事件");
     const _dialog = document.getElementById("editor-dialog");
-    console.log('log::::抓取到的dialog元素', _dialog);
-    // console.log(window.event.keyCode);
+    console.log("log::::抓取到的dialog元素", _dialog);
 
-    window.onkeydown = function (event: KeyboardEvent) {
-      // console.log('log::::window -> ', window);
-      // console.log('log::::event -> ', event);
-      console.log('log::::getSelection -> ', window.getSelection());
-    };
-  }, []);
+    // 键盘事件
+    /**
+     * event.preventDefault() -> 对点击事件做拦截,不触发默认的操作
+     * 需要注意拦截的内容
+     */
+  }, [refresh]);
 
   return (
     <div
@@ -58,7 +81,18 @@ const EditorDialog: React.FC = () => {
       suppressContentEditableWarning
       contentEditable="true"
     >
-      <p className="wtf">222</p>
+      <p className="test_p">
+        111aaaa<b>bbbb<i>cccc</i></b>dddd
+      </p>
+      <p className="test_p">
+        222aaaa<b>bbbb<i>cccc</i></b>dddd
+      </p>
+      <p className="test_p">
+        333aaaa<b>bbbb<i>cccc</i></b>dddd
+      </p>
+      <p className="test_p">
+        444aaaa<b>bbbb<i>cccc</i></b>dddd
+      </p>
     </div>
   );
 };
