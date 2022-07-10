@@ -3,7 +3,6 @@ import KeyboardListener from "jj-keyboard";
 import $ from "jquery";
 import "./index.less";
 
-console.log($);
 interface operationItem {
   id: number;
   type: string;
@@ -78,6 +77,19 @@ const EditorDialog: React.FC = () => {
   KeyboardListener.init();
   KeyboardListener.isConsole = false; // boolean -> 打印输入信息,可以在各浏览器进行测试
 
+  function setSelectionRange(element, position) {
+    if (element.setSelectionRange) {
+      element.focus();
+      element.setSelectionRange(position, position);
+    } else if (element.createTextRange) {
+      var range = element.createTextRange();
+      range.collapse(true);
+      range.moveEnd("character", position);
+      range.moveStart("character", position);
+      range.select();
+    }
+  }
+
   KeyboardListener.catch("Enter", (value) => {
     value.preventDefault();
     // const _dialog = document.getElementById("editor-dialog"); // 获取到指定标签
@@ -86,14 +98,14 @@ const EditorDialog: React.FC = () => {
     if (window.getSelection) {
       // console.log(window.getSelection());
       // console.log(window.getSelection().getRangeAt(0));
-      const _selection = window.getSelection();
+      // const _selection = window.getSelection();
       // const _range = _selection!.getRangeAt(0);
       // console.log(_selection!.extentNode!.parentElement.attributes);
       // extentNode
 
       // TODO 1: 给当前DOM标记一下,等会需要修改内容
-      const target = _selection!.extentNode!.parentElement;
-      $(target).attr("id", "target");
+      // const target = _selection!.extentNode!.parentElement;
+      // $(target).attr("id", "target");
       // console.log('target: ', $('#target'))
       // let _parent = $("#target").parents(".test_p");
       // console.log(_parent.html());
@@ -104,23 +116,58 @@ const EditorDialog: React.FC = () => {
       // 删除内容
       // 1: ">cccc</i></b>dddd"
       // 保留内容
-      // TODO: 使用什么方法来实现清除逻辑?
-      let _parent = $("#target").parents(".test_p");
-      let _dom = dom2json(_parent[0]);
-      console.log('获取到当前DOM结构 >> ', _dom);
 
+      // TODO2: 如何设置光标的位置? Enter/ShiftEnter/粘贴的时候,都会涉及到光标定位的问题
+
+      //定位div(contenteditable = "true")，上传图片后，光标移到输入框后面
+      function po_Last_Div(obj) {
+        if (window.getSelection) {
+          //ie11 10 9 ff safari
+          obj.focus(); //解决ff不获取焦点无法定位问题
+          var range = window.getSelection(); //创建range
+          range.selectAllChildren(obj); //range 选择obj下所有子内容
+          range.collapseToEnd(); //光标移至最后
+        } else if (document.selection) {
+          //ie10 9 8 7 6 5
+          var range = document.selection.createRange(); //创建选择对象
+          //var range = document.body.createTextRange();
+          range.moveToElementText(obj); //range定位到obj
+          range.collapse(false); //光标移至最后
+          range.select();
+        }
+      }
+
+      // TODO: 设置光标位置
+      var p = document.getElementById("i1");
+      var s = window.getSelection();
+      var r = document.createRange();
+      r.setStart(p, 0);
+      r.setEnd(p, 0);
+      s.removeAllRanges();
+      s.addRange(r);
+
+      // TODO3: 使用什么方法来实现清除逻辑?
+      // let _parent = $("#target").parents(".test_p");
+      // let _dom = dom2json(_parent[0]);
+      // console.log('获取到当前DOM结构 >> ', _dom);
+
+      // 添加br标签
       // let selection = window.getSelection(),
       //   range = selection.getRangeAt(0),
       //   br = document.createElement("br");
       // console.log("log::::range -> ", selection, range, br);
-      // console.log(value);
       // range.deleteContents();
       // range.insertNode(br);
       // range.setStartAfter(br);
       // range.setEndAfter(br);
       // selection.removeAllRanges();
       // selection.addRange(range);
-      // return false;
+      // document.getElementById("editor-dialog").appendChild(br);
+
+      // TODO: 需要想一下,使用修改JSON对象,还是正则替换的方式?
+
+
+      return false;
     }
   });
   KeyboardListener.catch("Meta+V", (value) => {
@@ -149,6 +196,10 @@ const EditorDialog: React.FC = () => {
      * 需要注意拦截的内容
      */
   }, [refresh]);
+
+  const setPost = () => {
+    setSelectionRange($("#input"), 0);
+  };
 
   return (
     <div
@@ -197,6 +248,10 @@ const EditorDialog: React.FC = () => {
         </b>
         dddd
       </p>
+      <input type="text" id="input" defaultValue="123123" />
+      <button id="setPos" onClick={setPost}>
+        set Pos
+      </button>
     </div>
   );
 };
