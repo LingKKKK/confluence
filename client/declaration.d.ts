@@ -23,3 +23,5 @@ declare module '*.css' {
 interface Window {
     r: string[];
 }
+
+declare module 'jquery'
