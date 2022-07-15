@@ -16,7 +16,7 @@ const Login: React.FC = () => {
     };
     console.log('用户登录信息::::', params);
     if (params?.account === 'admin' && params?.password === 'admin') {
-      history.push('/index');
+      history.push('/edit');
     }
   };
 

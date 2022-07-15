@@ -10,6 +10,9 @@ const Error = lazy(() => import(/* webpackChunkName: "Error"*/ '@/pages/user/err
 
 const Index = lazy(() => import(/* webpackChunkName: "Index"*/ '@/pages/Index/index'));
 
+// 编辑组件
+const Edit = lazy(() => import(/* webpackChunkName: "Edit"*/ '@/pages/Edit/index'));
+
 const routes = [
   {
     path: '/user/login',
@@ -18,6 +21,10 @@ const routes = [
   {
     path: '/index',
     component: Index
+  },
+  {
+    path: '/edit',
+    component: Edit
   },
   {
     path: '/dashboard',

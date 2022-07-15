@@ -25,7 +25,16 @@ interface operationItem {
   display: boolean;
 }
 
-const OperationHeader: React.FC = () => {
+interface IProps {
+  type: string;
+}
+
+interface IState {
+  hasError: Boolean;
+  info: string;
+  eventId: string;
+}
+const OperationHeader: React.FC<IProps> = (props) => {
   const [operationList, setOperationList] = useState(Array<operationItem>());
   const [isWatch, setWatch] = useState(false);
   const [isCollect, setCollect] = useState(false);
@@ -81,7 +90,8 @@ const OperationHeader: React.FC = () => {
         desc: "分享",
         class: "",
         display: true
-      }, {
+      },
+      {
         id: 7,
         type: "other",
         tag: <EllipsisOutlined className="opearTag" />,
@@ -101,21 +111,35 @@ const OperationHeader: React.FC = () => {
       <div className="crumbList">
         <Crumb />
       </div>
-      {isLock && <span className="operationBtn"><UnlockOutlined className="crumbIcon" /></span>}
-      {!isLock && <span className="operationBtn"><LockOutlined className="crumbIcon" /></span>}
-      {hasEnclosure && <span className="operationBtn"><LinkOutlined className="crumbIcon" /></span>}
-      <div className="operationDialog">
-        {operationList.map((item: operationItem) => {
-          return (
-            item.display && (
-              <span className={`operationBtn ${item.type}`} key={item.id}>
-                {item.tag}
-                {item.desc}
-              </span>
-            )
-          );
-        })}
-      </div>
+      {isLock && (
+        <span className="operationBtn">
+          <UnlockOutlined className="crumbIcon" />
+        </span>
+      )}
+      {!isLock && (
+        <span className="operationBtn">
+          <LockOutlined className="crumbIcon" />
+        </span>
+      )}
+      {hasEnclosure && (
+        <span className="operationBtn">
+          <LinkOutlined className="crumbIcon" />
+        </span>
+      )}
+      {props.type !== "edit" && (
+        <div className="operationDialog">
+          {operationList.map((item: operationItem) => {
+            return (
+              item.display && (
+                <span className={`operationBtn ${item.type}`} key={item.id}>
+                  {item.tag}
+                  {item.desc}
+                </span>
+              )
+            );
+          })}
+        </div>
+      )}
     </div>
   );
 };
