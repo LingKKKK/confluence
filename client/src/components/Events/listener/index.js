@@ -1,5 +1,6 @@
-import { useKeyboardKey } from './hooks';
+import { useKeyboardKey, removeKeyboardKey } from './hooks';
 
 export {
-  useKeyboardKey
+  useKeyboardKey,
+  removeKeyboardKey
 };

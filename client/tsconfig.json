@@ -42,6 +42,6 @@
     "node_modules",
     "dist",
     "axios",
-    "client/src/components/Plugins/index.tsx"
+    "./client/src/components/Plugins/index.tsx"
   ]
 }

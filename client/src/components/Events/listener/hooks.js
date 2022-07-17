@@ -1,41 +1,31 @@
-import { useEffect, useState, useCallback } from 'react';
+import KeyboardListener from "jj-keyboard";
+import Enter from '../keydown/Enter';
 
-export const useKeyboardKey = (onKeyDownCallback) => {
-  const [keyInfo, setKeyInfo] = useState({
-    key: null,
-    code: null,
-    keyCode: null,
-    output: null,
+export const useKeyboardKey = () => {
+  console.log("添加绑定");
+  KeyboardListener.delAllCatch();
+  KeyboardListener.destroy();
+  KeyboardListener.init();
+  KeyboardListener.isConsole = false;
+
+  KeyboardListener.catch("Enter", (e) => {
+    e.preventDefault();
+    Enter();
+    return false;
   });
+  KeyboardListener.catch("Meta+V", (e) => {
+    console.log('Meta+V');
+    e.preventDefault();
+    return false;
+  });
+  // 兼容性、按键Bug
+  KeyboardListener.catch("V+Meta", (e) => {
+    e.preventDefault();
+  });
+};
 
-  useEffect(() => {
-    addKeyListener();
-
-    return () => {
-      removeKeyListener();
-    }
-  }, []);
-
-  const addKeyListener = () => {
-    document.addEventListener('keydown', onKeyDown);
-    document.addEventListener('keyup', onKeyDown);
-  };
-
-  const removeKeyListener = () => {
-    document.removeEventListener('keydown', onKeyDown);
-    document.removeEventListener('keyup', onKeyDown);
-  };
-
-  const onKeyDown = useCallback(e => {
-    onKeyDownCallback(e);
-
-    setKeyInfo({
-      key: e.key,
-      code: e.code,
-      keyCode: e.keyCode,
-      output: e
-    });
-  }, []);
-
-  return { keyInfo, addKeyListener, removeKeyListener };
+export const removeKeyboardKey = () => {
+  KeyboardListener.delAllCatch();
+  KeyboardListener.destroy();
+  console.log('解除绑定');
 };

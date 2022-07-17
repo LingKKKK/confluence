@@ -30,20 +30,18 @@ class Index extends React.Component {
       height: "100vh",
       left: 0,
       borderRight: "1px solid #f2f2f2"
-      // display: history.location.pathname !== "/edit" ? 'block' : 'none'
     };
-    console.log(history.location.pathname != "/edit");
 
     return (
       <Router history={history}>
         <NavHeader />
         <Layout className="homeLayout">
-          {history.location.pathname != "/edit" && (
+          <div className="siderMenu">
             <Sider style={silderStyle} theme="light">
               <div className="logo" />
               <Menu />
             </Sider>
-          )}
+          </div>
           <Layout>
             {/* <Header className="header">
               <LayoutHeader />

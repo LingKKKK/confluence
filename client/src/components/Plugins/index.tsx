@@ -1,18 +1,21 @@
 import React from "react";
-import { useKeyboardKey } from "@/components/Events/listener/index";
+import { useKeyboardKey, removeKeyboardKey } from '@/components/Events/listener/index';
 import "./index.less";
 
 const EditorDialog: React.FC = () => {
-  const onKeyDownCallback = (e: KeyboardEvent) => {
-    console.log(e);
-    e.preventDefault;
-  };
-
-  const { keyInfo } = useKeyboardKey(onKeyDownCallback);
-
+  // useKeyboardKey();
   return (
-    <div>
-      {keyInfo.code}
+    <div
+      className="editor-dialog isEditing"
+      id="editor-dialog"
+      suppressContentEditableWarning
+      contentEditable="true"
+      onFocus={useKeyboardKey}
+      onBlur={removeKeyboardKey}
+    >
+      <ne-div>
+        <ne-p>123</ne-p>
+      </ne-div>
     </div>
   );
 };
