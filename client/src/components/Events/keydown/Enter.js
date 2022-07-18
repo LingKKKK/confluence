@@ -1,5 +1,6 @@
 // Object.defineProperty 点击回车
+import * as Tool from '../tool/tool';
 
 export default function () {
-  console.log('>>>>')
+  let extentNode = Tool.getExtentNode();
 }
