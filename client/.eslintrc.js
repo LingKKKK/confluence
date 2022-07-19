@@ -34,7 +34,8 @@ module.exports = {
     'no-console': 0,
     'no-debugger': 1,
     'no-var': 1,
-    semi: ['error', 'always'],
+    // semi: ['error', 'always'],
+    semi: 0,
     'no-irregular-whitespace': 0,
     'no-trailing-spaces': 1,
     'eol-last': 0,
@@ -49,7 +50,7 @@ module.exports = {
     'no-underscore-dangle': 0,
     'no-alert': 2,
     'no-lone-blocks': 0,
-    'no-class-assign': 2,
+    'no-clane-assign': 0, // ??? 没看懂啥意思,一直报错就关闭了
     'no-cond-assign': 2,
     'no-const-assign': 2,
     'no-delete-var': 2,

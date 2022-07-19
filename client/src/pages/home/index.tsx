@@ -32,6 +32,8 @@ class Index extends React.Component {
       borderRight: "1px solid #f2f2f2"
     };
 
+    console.log("Home/index");
+
     return (
       <Router history={history}>
         <NavHeader />

@@ -1,0 +1,97 @@
+ne-p {
+  display       : block;
+  font-size     : 14px;
+  font-weight   : 400;
+  line-height   : 1.5;
+  min-height    : 20px;
+  letter-spacing: 0;
+  margin        : 5px 0;
+
+  ne-text {
+    display: inline;
+  }
+}
+
+[ne-bold] {
+  font-weight: bold;
+}
+
+[ne-italic] {
+  font-style: italic;
+}
+
+[ne-underline] {
+  text-decoration      : underline;
+  text-underline-offset: 0.2em;
+}
+
+[ne-underline][ne-strikethrough] {
+  text-decoration: underline line-through;
+}
+
+@supports not (text-underline-offset: 0.2em) {
+  [ne-underline] {
+    text-decoration: none;
+    border-bottom  : 0.06em solid;
+  }
+
+  [ne-underline][ne-strikethrough] {
+    text-decoration: line-through;
+  }
+}
+
+[ne-strikethrough] {
+  text-decoration: line-through;
+}
+
+[ne-font-] {
+  text-decoration: line-through;
+}
+
+[ne-fontsize-12] {
+  font-size: 12px;
+}
+
+[ne-fontsize-13] {
+  font-size: 13px;
+}
+
+[ne-fontsize-14] {
+  font-size: 14px;
+}
+
+[ne-fontsize-15] {
+  font-size: 15px;
+}
+
+[ne-fontsize-16] {
+  font-size: 16px;
+}
+
+[ne-fontsize-19] {
+  font-size: 19px;
+}
+
+[ne-fontsize-22] {
+  font-size: 22px;
+}
+
+[ne-fontsize-24] {
+  font-size: 24px;
+}
+
+[ne-fontsize-29] {
+  font-size: 29px;
+}
+
+[ne-fontsize-32] {
+  font-size: 32px;
+}
+
+[ne-fontsize-40] {
+  font-size: 40px;
+}
+
+[ne-fontsize-48] {
+  font-size: 48px;
+}

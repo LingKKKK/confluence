@@ -9,7 +9,6 @@ const Login = lazy(() => import(/* webpackChunkName: "Login"*/ '@/pages/user/log
 const Error = lazy(() => import(/* webpackChunkName: "Error"*/ '@/pages/user/error'));
 
 const Index = lazy(() => import(/* webpackChunkName: "Index"*/ '@/pages/Index/index'));
-
 // 编辑组件
 const Edit = lazy(() => import(/* webpackChunkName: "Edit"*/ '@/pages/Edit/index'));
 

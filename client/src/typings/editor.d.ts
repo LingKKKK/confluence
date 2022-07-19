@@ -27,3 +27,12 @@ interface Event {
 interface Window {
   event?: Event | undefined | null;
 }
+
+interface NodeJson {
+  id?: String;
+  type?: String;
+  tag?: String;
+  son?: Array<NodeJson>;
+  attr?: Array<String>;
+  text?: String;
+}

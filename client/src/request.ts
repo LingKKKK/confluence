@@ -16,7 +16,7 @@ service.interceptors.request.use(
     function (config) {
         const cookie = getCookie() ? getCookie() : '';
         if (cookie) {
-            config.headers['access-token'] = cookie;
+            config.headers['accene-token'] = cookie;
         }
 
         config.headers['Content-Type'] = 'application/json;charset=UTF-8';

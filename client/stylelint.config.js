@@ -29,7 +29,7 @@ module.exports = {
       }
     ],
     'declaration-block-trailing-semicolon': 'always',
-    'selector-pseudo-class-no-unknown': [
+    'selector-pseudo-clane-no-unknown': [
       true,
       {
         ignorePseudoClasses: ['global']

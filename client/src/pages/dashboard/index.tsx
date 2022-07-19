@@ -1,35 +1,55 @@
-import React from 'react';
-import { Button } from 'antd';
-import { useRootStore } from '@mobx/useRootStore';
-import { observer } from 'mobx-react';
-import { Switch } from 'react-router-dom';
-import PrivateRoute from '@components/PrivateRoute';
-import { Table } from 'antd';
-import './index.less';
+import React, { useState } from "react";
+import { Button } from "antd";
+import { useRootStore } from "@mobx/useRootStore";
+import { observer } from "mobx-react";
+import { Switch } from "react-router-dom";
+import PrivateRoute from "@components/PrivateRoute";
+import { Table } from "antd";
+import "./index.less";
 
 function Dashboard(props: any) {
-  console.log(props);
+  // console.log("props: ", props);
   const { dashboardStore } = useRootStore();
-  console.log('dashboardStore: ', dashboardStore);
+  console.log("dashboardStore:: ", JSON.stringify(dashboardStore.count));
   React.useEffect(() => {
     dashboardStore.getTable();
-    console.log('useEffect - dashboardStore: ', dashboardStore);
   }, []);
 
   const RouteWithSubRoutes = (route) => (
     <PrivateRoute path={route.path} component={route.component} routes={route.routes} />
   );
 
-  const routeConfig = props.routes.map((route, i) => (
-    <RouteWithSubRoutes key={i} {...route} />
-  ));
+  const routeConfig = props.routes.map((route, i) => <RouteWithSubRoutes key={i} {...route} />);
+
+  const aa = () => {
+    dashboardStore.increment();
+    setTimeout(() => {
+      console.log(dashboardStore.count);
+    }, 1000);
+  };
+
+  const bb = () => {
+    dashboardStore.decrement();
+    setTimeout(() => {
+      console.log(dashboardStore.count);
+    }, 1000);
+  };
 
   return (
-    <section className="dashboard">
-      <OrderTable list={dashboardStore.list} isLoading={dashboardStore.isLoading.get('getTable')} />
-      <Button onClick={() => props.history.push('/dashboard/bus')}>二级路由</Button>
-      <Switch>{routeConfig}</Switch>
-    </section>
+    <>
+      {dashboardStore.count}
+      <button onClick={aa}> +++ </button>
+      <button onClick={bb}> --- </button>
+      {dashboardStore.list.length}
+      <section className="dashboard">
+        <OrderTable
+          list={dashboardStore.list}
+          isLoading={dashboardStore.isLoading.get("getTable")}
+        />
+        <Button onClick={() => props.history.push("/dashboard/bus")}>二级路由</Button>
+        <Switch>{routeConfig}</Switch>
+      </section>
+    </>
   );
 }
 
@@ -38,28 +58,28 @@ export default observer(Dashboard);
 // 表格列配置
 const columns = [
   {
-    title: 'Title1',
-    dataIndex: 'aaaaa'
+    title: "Title1",
+    dataIndex: "aaaaa"
   },
   {
-    title: 'Title2',
-    dataIndex: 'bbbbb'
+    title: "Title2",
+    dataIndex: "bbbbb"
   },
   {
-    title: 'Title3',
-    dataIndex: 'ccccc'
+    title: "Title3",
+    dataIndex: "ccccc"
   },
   {
-    title: 'Title4',
-    dataIndex: 'ddddd'
+    title: "Title4",
+    dataIndex: "ddddd"
   },
   {
-    title: 'Title5',
-    dataIndex: 'eeeeee'
+    title: "Title5",
+    dataIndex: "eeeeee"
   },
   {
-    title: 'Title6',
-    dataIndex: 'ffffff'
+    title: "Title6",
+    dataIndex: "ffffff"
   }
 ];
 

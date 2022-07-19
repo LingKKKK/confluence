@@ -276,7 +276,7 @@ mode: 根据环境区分配置
     // css相关
     css: {
       /** modules
-       * 配置 CSS modules 的行为。选项将被传递给 postcss-modules。
+       * 配置 CSS modules 的行为。选项将被传递给 postcne-modules。
        * 一般都是外联样式 modules
        */
       modules: {}

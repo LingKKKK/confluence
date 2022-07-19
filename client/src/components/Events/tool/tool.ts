@@ -34,28 +34,12 @@ export const createNewDom = (target) => {
  * @params {}
  * @return Object<extentNode>
  * @description 不需要传入任何参数;可获取到对应的Node节点信息,并给该节点添加标记: eg. `id='target' | data-target='true'`
- * @todo1 获取节点信息
- * @todo2 获取光标偏移量
- * @todo3 给节点添加标记,方便后续的分割操作
  */
 export const getExtentNode = () => {
-  const selection = window.getSelection();
-  console.log(11, selection);
-
-  const target = selection.extentNode.parentElement;
-  console.log('target: ', target);
-
-  // $(target).attr("id", "target");
-  // console.log('target: ', $('#target'))
-  // let _parent = $("#target").parents(".test_p");
-  // console.log(_parent.html());
-
-  let extentNodeInfo = {
-    offset: window.getSelection().getRangeAt(0).startOffset
+  const selection: Selection | null = window.getSelection();
+  const target = selection?.anchorNode?.parentElement; // 获取到光标所在的目标对象
+  return {
+    id: target?.id,
+    offset: selection?.getRangeAt(0).startOffset
   };
-  console.log("extentNodeInfo: ", extentNodeInfo);
-  // const _selection = window.getSelection();
-  // const _range = _selection.getRangeAt(0);
-  // console.log(_selection.extentNode.parentElement.attributes);
-  // console.log(_range);
 };

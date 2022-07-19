@@ -41,7 +41,6 @@
   "exclude": [
     "node_modules",
     "dist",
-    "axios",
-    "./client/src/components/Plugins/index.tsx"
+    "axios"
   ]
 }
