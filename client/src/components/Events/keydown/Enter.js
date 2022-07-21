@@ -33,7 +33,13 @@ export default function (editorStore, event) {
         }
       }
       if (!tagName) {
-        tagName.css('background', 'red');
+        setTimeout(() => {
+          // console.log(next, next.parent().parent());
+          const hash = Utils.createHash(8);
+          const dom = next.parent();
+          dom.attr('data-role', hash).parent().attr('id', hash);
+          dom.siblings().attr('data-role', hash)
+        }, 1);
         // 处理nex中的id以及data-role属性; prev不需要额外处理
       }
     }, 1);

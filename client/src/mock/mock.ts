@@ -85,7 +85,14 @@ const getFileData = Mock.mock(location.origin + "/api/getFileData.json", "get", 
           tag: "ne-text",
           attr: ["ne-strikethrough", "ne-color-30", "ne-fontsize-14"],
           text: "bbbb"
-        },
+        }
+      ]
+    },
+    {
+      id: "56ytrddg",
+      type: "h",
+      tag: "ne-h3",
+      son: [
         {
           id: "444444",
           type: "text",

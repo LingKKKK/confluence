@@ -11,25 +11,12 @@ export const useKeyboardKey = (editorStore) => {
     Enter(editorStore, e);
     return false;
   });
-  // KeyboardListener.catch("Meta+V", (e) => {
-  //   console.log('Meta+V');
-  //   e.preventDefault();
-  //   return false;
-  // });
-  // KeyboardListener.catch("V+Meta", (e) => {
-  //   e.preventDefault();
-  // });
-  // KeyboardListener.catch("Backspace", (e) => {
-  //   console.log(e);
-  // });
-  // KeyboardListener.catch("Backspace+Meta", (e) => {
-  //   e.preventDefault();
-  //   return false;
-  // });
-  // KeyboardListener.catch("Meta+Backspace", (e) => {
-  //   e.preventDefault();
-  //   return false;
-  // });
+  KeyboardListener.catch("Shift+Enter", (e) => {
+    e.preventDefault();
+  });
+  KeyboardListener.catch("Enter+Shift", (e) => {
+    e.preventDefault();
+  });
 }
 
 export const removeKeyboardKey = () => {

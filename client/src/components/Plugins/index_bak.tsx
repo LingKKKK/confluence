@@ -177,10 +177,12 @@ const EditorDialog: React.FC = () => {
   KeyboardListener.catch("Meta+V", (value) => {
     value.preventDefault();
   });
-  // KeyboardListener.catch("Shift+Enter", (value) => {
-  //   value.preventDefault();
-  // });
-
+  KeyboardListener.catch("Shift+Enter", (value) => {
+    value.preventDefault();
+  });
+  KeyboardListener.catch("Enter+Shift", (value) => {
+    value.preventDefault();
+  });
   // 兼容性、按键Bug
   KeyboardListener.catch("V+Meta", (value) => {
     value.preventDefault();
