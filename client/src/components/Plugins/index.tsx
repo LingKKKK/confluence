@@ -8,40 +8,46 @@ import "./index.less";
 import EditorText from "./Text/index";
 import EditorTitle from "./Title/index";
 
-const EditorDialog: React.FC = () => {
+// function EditorDialog(props: any) {
+//   console.log("EditorDialog-props: ", props);
+const EditorDialog: React.FC = (props: any) => {
+  console.log("EditorDialog-props: ", props);
   const { editorStore } = useRootStore();
+  // editorStore.getFileData();
+  React.useEffect(() => {
+    editorStore.getFileData();
+  }, []);
 
-  editorStore.getFileData();
-
-  const aa = () => {
-    editorStore.increment();
-  };
-
-  const bb = () => {
-    editorStore.decrement();
-  };
+  // const aa = () => {
+  //   editorStore.increment();
+  // };
+  // const bb = () => {
+  //   editorStore.decrement();
+  // };
+  // console.log('获取到的文件nodeJson内容 >>> ', JSON.stringify(editorStore.list))
+  // {editorStore.count}
+  // <button onClick={aa}>+++</button>
+  // <button onClick={bb}>---</button>
 
   return (
     <>
-      {editorStore.count}
-      <button onClick={aa}>+++</button>
-      <button onClick={bb}>---</button>
       <div
         className="editor-dialog isEditing ne-engine ne-typography-classic ne-paragraph-spacing-relax"
         id="editor-dialog"
         suppressContentEditableWarning
         contentEditable="true"
         onFocus={() => {
-          useKeyboardKey(editorStore)
+          useKeyboardKey(editorStore);
         }}
         onBlur={removeKeyboardKey}
       >
-        {editorStore.list && editorStore.list.map((item: NodeJson) => {
+        {editorStore.list &&
+          editorStore.list.map((item: NodeJson, index: number) => {
             if (item.type === "h") {
-              return <EditorTitle key={item.id} data={item} />;
+              return <EditorTitle key={item.id} data={item} index={index} />;
             }
             if (item.type === "p") {
-              return <EditorText key={item.id} data={item} />;
+              return <EditorText key={item.id} data={item} index={index}/>;
             }
           })}
       </div>

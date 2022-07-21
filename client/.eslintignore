@@ -2,6 +2,5 @@
 dist/*
 build/*
 node_modules/*
-client/src/components/Plugins/index.tsx
 
 # 其他

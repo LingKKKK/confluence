@@ -3,15 +3,15 @@ import * as api from "@servers/dashboard";
 import BasicStore, { initLoading } from "../basicStore";
 
 export class DashboardStore extends BasicStore {
-  constructor(){
-    super();
-    makeObservable(this)
-  }
-
   @observable list: any = [];
   @observable count: number = 0;
 
-  @initLoading
+  constructor() {
+    super();
+    makeObservable(this);
+  }
+
+  // @initLoading
   @action
   async getTable() {
     const res: any = await api.getTable();
@@ -22,20 +22,13 @@ export class DashboardStore extends BasicStore {
 
   @action
   async increment() {
-    const res: any = 3;
-    runInAction(() => {
-      console.log(res);
-      this.count = res;
-    });
+    this.count -= 1;
+    this.list = [];
   }
 
   @action
   async decrement() {
-    const res: any = 5;
-    runInAction(() => {
-      console.log(res);
-      this.count = res;
-    });
+    this.count += 1;
   }
 }
 

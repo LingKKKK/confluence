@@ -8,6 +8,7 @@ import { Table } from "antd";
 import "./index.less";
 
 function Dashboard(props: any) {
+  console.log('111')
   // console.log("props: ", props);
   const { dashboardStore } = useRootStore();
   console.log("dashboardStore:: ", JSON.stringify(dashboardStore.count));
@@ -23,16 +24,10 @@ function Dashboard(props: any) {
 
   const aa = () => {
     dashboardStore.increment();
-    setTimeout(() => {
-      console.log(dashboardStore.count);
-    }, 1000);
   };
 
   const bb = () => {
     dashboardStore.decrement();
-    setTimeout(() => {
-      console.log(dashboardStore.count);
-    }, 1000);
   };
 
   return (
@@ -40,7 +35,7 @@ function Dashboard(props: any) {
       {dashboardStore.count}
       <button onClick={aa}> +++ </button>
       <button onClick={bb}> --- </button>
-      {dashboardStore.list.length}
+      {JSON.stringify(dashboardStore.list)}
       <section className="dashboard">
         <OrderTable
           list={dashboardStore.list}

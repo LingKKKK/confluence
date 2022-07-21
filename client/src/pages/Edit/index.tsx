@@ -3,7 +3,6 @@ import React, { lazy } from "react";
 import { observer } from "mobx-react";
 import OperationDialog from "@components/OperationDialog/index";
 import Editor from "@components/Plugins/index";
-// const Editor = lazy(() => import(/* webpackChunkName: "Editor"*/ '@components/Plugins/index'));
 
 import "./index.less";
 
@@ -12,7 +11,7 @@ interface IProps {
 }
 
 const Edit: React.FC<IProps> = (props) => {
-  console.log('渲染Edit组件 >>> ');
+  console.log('渲染Edit组件 >>> ', props);
 
   return (
     <section className="index">
@@ -21,6 +20,7 @@ const Edit: React.FC<IProps> = (props) => {
         <div className="document-info">
           <div className="title">devOps 流程相关</div>
         </div>
+        {/* 引入编辑器组件 */}
         <Editor />
       </div>
     </section>

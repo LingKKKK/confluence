@@ -2,6 +2,8 @@
 import { action, observable } from "mobx";
 
 export default class BasicStore {
+  // 在这里添加公共样式
+
   @observable isLoading = observable.map({});
 
   @action
