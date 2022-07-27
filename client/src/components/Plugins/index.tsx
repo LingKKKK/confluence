@@ -7,6 +7,12 @@ import { useRootStore } from "@mobx/useRootStore";
 import "./index.less";
 import EditorText from "./Text/index";
 import EditorTitle from "./Title/index";
+import { jsx } from "snabbdom";
+
+import { createEditor, createToolbar } from '@packages/editor/src/index'
+
+console.log(createEditor, 'createEditor')
+console.log(createToolbar, 'createToolbar')
 
 // function EditorDialog(props: any) {
 //   console.log("EditorDialog-props: ", props);
@@ -30,28 +36,26 @@ const EditorDialog: React.FC = (props: any) => {
   // <button onClick={bb}>---</button>
 
   return (
-    <>
-      <div
-        className="editor-dialog isEditing ne-engine ne-typography-classic ne-paragraph-spacing-relax"
-        id="editor-dialog"
-        suppressContentEditableWarning
-        contentEditable="true"
-        onFocus={() => {
-          useKeyboardKey(editorStore);
-        }}
-        onBlur={removeKeyboardKey}
-      >
-        {editorStore.list &&
-          editorStore.list.map((item: NodeJson, index: number) => {
-            if (item.type === "h") {
-              return <EditorTitle key={item.id} data={item} index={index} />;
-            }
-            if (item.type === "p") {
-              return <EditorText key={item.id} data={item} index={index}/>;
-            }
-          })}
-      </div>
-    </>
+    <div
+      className="editor-dialog isEditing ne-engine ne-typography-classic ne-paragraph-spacing-relax"
+      id="editor-dialog"
+      suppressContentEditableWarning
+      contentEditable="true"
+      onFocus={() => {
+        useKeyboardKey(editorStore);
+      }}
+      onBlur={removeKeyboardKey}
+    >
+      {editorStore.list &&
+        editorStore.list.map((item: NodeJson, index: number) => {
+          if (item.type === "h") {
+            return <EditorTitle key={item.id} data={item} index={index} />;
+          }
+          if (item.type === "p") {
+            return <EditorText key={item.id} data={item} index={index} />;
+          }
+        })}
+    </div>
   );
 };
 

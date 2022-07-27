@@ -21,7 +21,8 @@
     "importHelpers": true,
     "lib": ["esnext", "dom", "dom.iterable"],
     "skipLibCheck": true,
-    "jsx": "react-jsx",
+    "jsx": "react",
+    "jsxFactory": "jsx", /* snabbdom jsx */
     "typeRoots": ["node", "node_modules/@types", "./typings"],
     "rootDirs": ["./src"],
     "baseUrl": "./src",
@@ -29,6 +30,7 @@
       "@/*": ["*"],
       "@assets/*": ["assets/*"],
       "@components/*": ["components/*"],
+      "@packages/*": ["packages/*"],
       "@locales/*": ["locales/*"],
       "@mock/*": ["mock/*"],
       "@pages/*": ["pages/*"],
