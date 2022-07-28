@@ -1,5 +1,4 @@
 import React from "react";
-// import * as Sentry from '@sentry/react';
 import { ConfigProvider } from "antd";
 import { configure } from "mobx";
 import intl from "react-intl-universal";
@@ -28,8 +27,6 @@ const locales = {
   en_US: enUSJSON,
   zh_CN: znCNJSON
 };
-
-// Sentry.init({ dsn: 'https://11f12914dc114782b37d9d94c8839a40@o414598.ingest.sentry.io/5304319' });
 
 interface IProps {}
 

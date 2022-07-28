@@ -11,3 +11,6 @@ dist
 
 # 其他自定义内容
 .pnpm-debug.log
+
+# 屏蔽Editor, 未开发完毕
+editor/*

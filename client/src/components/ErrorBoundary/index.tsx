@@ -1,6 +1,5 @@
 import React from 'react';
 import { Result, Button } from 'antd';
-// import * as Sentry from '@sentry/react';
 
 interface IProps {}
 
@@ -26,17 +25,6 @@ class ErrorBoundary extends React.Component<IProps, IState> {
       info: error + ''
     });
     const userId = Math.random().toString(36).substr(2, 9);
-    // Sentry.withScope((scope) => {
-    //   scope.setExtras(info.componentStack);
-    //   scope.setUser({
-    //     id: userId,
-    //     username: 'testUser',
-    //     ip_address: '',
-    //     email: ''
-    //   });
-    //   const eventId = Sentry.captureException(error);
-    //   this.setState({ eventId });
-    // });
   }
 
   render() {
@@ -50,7 +38,6 @@ class ErrorBoundary extends React.Component<IProps, IState> {
           extra={
             <Button
               type="primary"
-              // onClick={() => Sentry.showReportDialog({ eventId: this.state.eventId })}
             >
               Report feedback
             </Button>

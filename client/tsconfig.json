@@ -34,7 +34,7 @@
       "@pages/*": ["pages/*"],
       "@mobx/*": ["mobx/*"],
       "@utils/*": ["utils/*"],
-      "@servers/*": ["servers/*"]
+      "@servers/*": ["servers/*"],
     }
   },
   "include": ["./src/**/*", "./declaration.d.ts"],
@@ -42,6 +42,5 @@
     "node_modules",
     "dist",
     "axios",
-    "./client/src/components/Plugins/index.tsx"
   ]
 }

@@ -3,7 +3,7 @@ import { Button } from "antd";
 // import { useRootStore } from '@mobx/useRootStore'; // mobx → store
 import { observer } from "mobx-react";
 import OperationDialog from "@components/OperationDialog/index";
-import Editor from "@components/Plugins/index";
+import Editor from "@components/SlateEditor/index";
 import "./index.less";
 
 function Index(props: any) {
